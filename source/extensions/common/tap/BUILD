@@ -14,6 +14,8 @@ envoy_cc_library(
     deps = [
         "//envoy/http:header_map_interface",
         "//source/extensions/common/matcher:matcher_lib",
+        "//source/common/common:random_generator_lib",
+        "//source/common/protobuf:utility_lib",
         "@envoy_api//envoy/config/tap/v3:pkg_cc_proto",
         "@envoy_api//envoy/data/tap/v3:pkg_cc_proto",
     ],

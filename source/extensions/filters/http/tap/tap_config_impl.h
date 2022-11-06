@@ -31,7 +31,9 @@ public:
       : config_(std::move(config)), stream_id_(stream_id),
         sink_handle_(config_->createPerTapSinkHandleManager(stream_id)),
         statuses_(config_->createMatchStatusVector()) {
-    config_->rootMatcher().onNewStream(statuses_);
+    if (config_->enabled()) {
+      config_->rootMatcher().onNewStream(statuses_);
+    }
   }
 
   // TapFilter::HttpPerRequestTapper

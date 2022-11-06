@@ -154,6 +154,11 @@ public:
    * Return whether the tap session should run in streaming or buffering mode.
    */
   virtual bool streaming() const PURE;
+
+  /**
+   * Return whether the tap session is enabled.
+   */
+  virtual bool enabled() const PURE;
 };
 
 using TapConfigSharedPtr = std::shared_ptr<TapConfig>;

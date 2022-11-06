@@ -100,6 +100,9 @@ public:
   }
   const Matcher& rootMatcher() const override;
   bool streaming() const override { return streaming_; }
+  bool enabled() const override {
+    return ProtobufPercentHelper::evaluateFractionalPercent(enabled_.default_value(), random_->random());
+  }
 
 protected:
   TapConfigBaseImpl(const envoy::config::tap::v3::TapConfig& proto_config,
@@ -113,6 +116,8 @@ private:
   const uint32_t max_buffered_rx_bytes_;
   const uint32_t max_buffered_tx_bytes_;
   const bool streaming_;
+  envoy::config::core::v3::RuntimeFractionalPercent enabled_;
+  std::unique_ptr<Random::RandomGenerator> random_;
   Sink* sink_to_use_;
   SinkPtr sink_;
   envoy::config::tap::v3::OutputSink::Format sink_format_;

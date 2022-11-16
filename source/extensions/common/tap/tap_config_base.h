@@ -116,8 +116,8 @@ private:
   const uint32_t max_buffered_rx_bytes_;
   const uint32_t max_buffered_tx_bytes_;
   const bool streaming_;
-  envoy::config::core::v3::RuntimeFractionalPercent enabled_;
-  std::unique_ptr<Random::RandomGenerator> random_;
+  const envoy::config::core::v3::RuntimeFractionalPercent enabled_;
+  const std::unique_ptr<Random::RandomGenerator> random_;
   Sink* sink_to_use_;
   SinkPtr sink_;
   envoy::config::tap::v3::OutputSink::Format sink_format_;
